@@ -297,6 +297,12 @@ make run              # downloads California Housing (0.4 MB), reproduces metric
 make test             # 60 tests, ~15 s
 ```
 
+`make install` takes the newest compatible packages. To reproduce the committed `reports/`, use
+`make install-locked` instead: it installs the versions pinned in
+[`requirements.lock`](requirements.lock) (Python 3.12). With them `make run` regenerates
+`reports/metrics.json` exactly, up to the last floating-point digit of four values (checked on
+macOS arm64).
+
 ```bash
 driftwatch compare reference.parquet current.parquet --target y --prediction y_hat \
     --out report.html --json summary.json          # exit code 1 if anything fired
